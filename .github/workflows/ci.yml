@@ -26,7 +26,7 @@ jobs:
         run: ./mvnw clean package
 
       - name: Subir el empaquetado (.jar / .war) como Artefacto
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v4
         with:
           name: app-backend
           path: target/*.jar  # Cambia a target/*.war si estás generando un WAR
