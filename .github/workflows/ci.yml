@@ -22,5 +22,12 @@ jobs:
       - name: Dar permisos de ejecución al Maven Wrapper
         run: chmod +x mvnw
 
-      - name: Compilar y ejecutar pruebas unitarias
-        run: ./mvnw clean test
+      - name: Compilar, probar y empaquetar
+        run: ./mvnw clean package
+
+      - name: Subir el empaquetado (.jar / .war) como Artefacto
+        uses: actions/upload-artifact@v5
+        with:
+          name: app-backend
+          path: target/*.jar  # Cambia a target/*.war si estás generando un WAR
+          retention-days: 7
